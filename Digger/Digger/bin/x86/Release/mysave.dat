@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<SaveGame xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <currLife>3</currLife>
-  <currpoint>0</currpoint>
-  <currlevel>1</currlevel>
-</SaveGame>
