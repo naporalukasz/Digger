@@ -1,0 +1,782 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Digger</name>
+    </assembly>
+    <members>
+        <member name="M:Digger.Program.Main(System.String[])">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:Digger.Game">
+            <summary>
+            This is the main type for your game
+            </summary>
+        </member>
+        <member name="F:Digger.Game.CurrentGameState">
+            <summary>
+            Okresla obecny stan gry.
+            </summary>
+        </member>
+        <member name="M:Digger.Game.#ctor">
+            <summary>
+            Tworzy nowy biekt typu Game.
+            </summary>
+        </member>
+        <member name="M:Digger.Game.Initialize">
+            <summary>
+            Allows the game to perform any initialization it needs to before starting to run.
+            This is where it can query for any required services and load any non-graphic
+            related content.  Calling base.Initialize will enumerate through any components
+            and initialize them as well.
+            </summary>
+        </member>
+        <member name="M:Digger.Game.LoadContent">
+            <summary>
+            LoadContent will be called once per game and is the place to load
+            all of your content.
+            </summary>
+        </member>
+        <member name="M:Digger.Game.UnloadContent">
+            <summary>
+            UnloadContent will be called once per game and is the place to unload
+            all content.
+            </summary>
+        </member>
+        <member name="M:Digger.Game.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Allows the game to run logic such as updating the world,
+            checking for collisions, gathering input, and playing audio.
+            </summary>
+            <param name="gameTime">Provides a snapshot of timing values.</param>
+        </member>
+        <member name="M:Digger.Game.Draw(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            This is called when the game should draw itself.
+            </summary>
+            <param name="gameTime">Provides a snapshot of timing values.</param>
+        </member>
+        <member name="M:Digger.Game.Initbuttons">
+            <summary>
+            Inicjalizuje przuciski wystepujace w menu.
+            </summary>
+        </member>
+        <member name="M:Digger.Game.loadScore">
+            <summary>
+            Wczytuje zappisane wyniki.
+            </summary>
+        </member>
+        <member name="M:Digger.Game.loginmenu">
+            <summary>
+            Wywoluje powitalne okno, gdzie uzytkownik moze podac swoje imie.
+            </summary>
+        </member>
+        <member name="M:Digger.Game.initFile">
+            <summary>
+            Inicjalizuje pliki odpowiedzialne za zapisywanie gry i najlepszych wynikow.
+            </summary>
+        </member>
+        <member name="T:Digger.Score">
+            <summary>
+            Struktura do przechowywania najlepszych wynikow.
+            </summary>
+        </member>
+        <member name="T:Digger.HighScores">
+            <summary>
+            Klasa sluzaca do zapisu najlepszych wynikow.
+            </summary>
+        </member>
+        <member name="F:Digger.HighScores.Players">
+            <summary>
+            Lista 10 najlepszych wynikow.
+            </summary>
+        </member>
+        <member name="F:Digger.HighScores.Count">
+            <summary>
+            Obecna ilosc najlepszych wynikow.
+            </summary>
+        </member>
+        <member name="M:Digger.HighScores.#ctor">
+            <summary>
+            Tworzy nowy obiekt typu HighScores.
+            </summary>
+        </member>
+        <member name="M:Digger.HighScores.SaveHighScores(Digger.HighScores)">
+            <summary>
+            funkcja zapisuje najlepsze wyniki do pliku xml.
+            </summary>
+            <param name="data">Dane do zapisu.</param>
+        </member>
+        <member name="M:Digger.HighScores.LoadHighScores">
+            <summary>
+            Funkcja wczytuje najlepsze wyniki z pliku.
+            </summary>
+            <returns>Zwraca obiekt HighScores</returns>
+        </member>
+        <member name="M:Digger.HighScores.SaveHighScore(Digger.Score)">
+            <summary>
+            funkcja dodaje nowy wynik do obecnie zapisanych. Sprawdza czy nie przekroczono liczby 10 najlepszych wynikow, sortuje wyniki malejaco.
+            </summary>
+            <param name="newScore">nowy wynik do dodania.</param>
+            <returns>Uaktualnione wyniki</returns>
+        </member>
+        <member name="M:Digger.HighScores.makeHighScoreString">
+            <summary>
+            worzy string ze wszystkich dostepnych wynikow.
+            </summary>
+            <returns>Wynikowy string</returns>
+        </member>
+        <member name="M:Digger.HighScores.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Wypisuje na ekran najlepsze wyniki.
+            </summary>
+            <param name="spriteBatch"></param>
+        </member>
+        <member name="T:Digger.cButton">
+            <summary>
+            Klasa implementująca przyciski wystepujące w grze.
+            </summary>
+        </member>
+        <member name="M:Digger.cButton.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Graphics.GraphicsDevice)">
+            <summary>
+            Tworzy nowy obiekt typu cButton.
+            </summary>
+            <param name="newTexture">Teksstur dal cButton</param>
+            <param name="graphics"></param>
+        </member>
+        <member name="F:Digger.cButton.isClicked">
+            <summary>
+            Zmienna okreslająca czy przycisk jest klikniety.
+            </summary>
+        </member>
+        <member name="M:Digger.cButton.Update(Microsoft.Xna.Framework.Input.MouseState)">
+            <summary>
+            Funkcja uaktualnia stan przycisku zależnie czy został on kikniety czy nie.
+            </summary>
+            <param name="mouse">Myszka</param>
+        </member>
+        <member name="M:Digger.cButton.setPosition(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Ustawia przycisk w podanej pozycji.
+            </summary>
+            <param name="newPosition">Nowe wspolrzedne. </param>
+        </member>
+        <member name="M:Digger.cButton.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Rysuje przeycisk.
+            </summary>
+            <param name="spritBatch"></param>
+        </member>
+        <member name="T:Digger.SaveGame">
+            <summary>
+            Struktura sluzaca do zapisu gry.
+            </summary>
+        </member>
+        <member name="T:Digger.LoadGame">
+            <summary>
+            klasa odpowiedzialna za zapisywanie obecnego ztanu gry.
+            </summary>
+        </member>
+        <member name="M:Digger.LoadGame.SaveGame(Digger.SaveGame)">
+            <summary>
+            Zapisuje obecny stan gry.
+            </summary>
+            <param name="data">Dane do zapisu.</param>
+        </member>
+        <member name="M:Digger.LoadGame.LoadGames">
+            <summary>
+            Funkcja wczytuje zapisana gre.
+            </summary>
+            <returns>Dane dotyczace zapisu gry</returns>
+        </member>
+        <member name="T:Digger.Trap">
+            <summary>
+            Klasa implementuje pulapke
+            </summary>
+        </member>
+        <member name="M:Digger.IGameObject.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Funkcja odpowiedzialna za uaktualnianie obiektu.
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:Digger.IGameObject.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Funkcja odpowiedzialna ze rysowanie obiektu na planszy.
+            </summary>
+            <param name="spritebratch"></param>
+        </member>
+        <member name="F:Digger.Trap.position">
+            <summary>
+            Pozycja pulapki
+            </summary>
+        </member>
+        <member name="F:Digger.Trap.trapTimer">
+            <summary>
+            timer odliczajacy czas do aktywacji pulapki
+            </summary>
+        </member>
+        <member name="M:Digger.Trap.#ctor(Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Tworzy nowy obiekt typu Trap
+            </summary>
+            <param name="startPosition">Pozycja startowa</param>
+        </member>
+        <member name="M:Digger.Trap.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Uaktualnia pulapke
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:Digger.Trap.activate(System.Object,System.EventArgs)">
+            <summary>
+            uruchamia pulapke
+            </summary>
+            <param name="myObject"></param>
+            <param name="myEventArgs"></param>
+        </member>
+        <member name="M:Digger.Trap.checkHit">
+            <summary>
+            Sprawdza czy pulapka trafila w cos, dodaje punkty za pulapke 
+            </summary>
+        </member>
+        <member name="T:Digger.Bullet">
+            <summary>
+            klasa odpowiedzialna ze tworzenie, uaktualnianie i rysowanie pociskow.
+            </summary>
+        </member>
+        <member name="M:Digger.Bullet.#ctor(Microsoft.Xna.Framework.Vector2,System.Int32)">
+            <summary>
+            Tworzy nowy obiekt typu Bullet.
+            </summary>
+            <param name="startPosition">Pozycja startowa dla Bullet.</param>
+            <param name="type">Określa rodzaj Bullet, dostepne sa dwa typy.</param>
+        </member>
+        <member name="M:Digger.Bullet.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Uaktualnia stan Bullet,sprawdza kolizje z przeciwnikami i przeszkodami.
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:Digger.Bullet.checHit2">
+            <summary>
+            Funkcja sprawdza czy pocisk drugiego typu trafil w przeciwnika, przeszkode. Dodaje punkty za trafienia.
+            </summary>
+        </member>
+        <member name="M:Digger.Bullet.checkHit">
+            <summary>
+            Funkcja sprawdza czy pocisk pierwszego typu trafil w przeciwnika, przeszkode. Dodaje punkty za trafienia.
+            </summary>
+        </member>
+        <member name="M:Digger.Bullet.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Rysuje Bullet na planszy.
+            </summary>
+            <param name="spriteBratch"></param>
+        </member>
+        <member name="T:Digger.Buttons">
+            <summary>
+            Rodzaje przyciskow
+            </summary>
+        </member>
+        <member name="T:Digger.GameState">
+            <summary>
+            Stany rozgryki
+            </summary>
+        </member>
+        <member name="T:Digger.difficulty">
+            <summary>
+            pozimy trudnosci
+            </summary>
+        </member>
+        <member name="T:Digger.Source">
+            <summary>
+            Klasa przechowuje tekstury i czcionka
+            </summary>
+        </member>
+        <member name="F:Digger.Source.tony">
+            <summary>
+            tekstura gracza
+            </summary>
+        </member>
+        <member name="F:Digger.Source.robak">
+            <summary>
+            tekstura robaka
+            </summary>
+        </member>
+        <member name="F:Digger.Source.pole">
+            <summary>
+            tekstura pola
+            </summary>
+        </member>
+        <member name="F:Digger.Source.tloScore">
+            <summary>
+            tekstura tla
+            </summary>
+        </member>
+        <member name="F:Digger.Source.rubin">
+            <summary>
+            tekstura rubinu
+            </summary>
+        </member>
+        <member name="F:Digger.Source.diament">
+            <summary>
+            tekstura diamentu
+            </summary>
+        </member>
+        <member name="F:Digger.Source.weapon1">
+            <summary>
+            tekstura pistoletu
+            </summary>
+        </member>
+        <member name="F:Digger.Source.weapon2">
+            <summary>
+            tekstura dzidy
+            </summary>
+        </member>
+        <member name="F:Digger.Source.pocisk1">
+            <summary>
+            tekstura pocisku pistoletu
+            </summary>
+        </member>
+        <member name="F:Digger.Source.pocisk2">
+            <summary>
+            tekstura pocisku dzidy
+            </summary>
+        </member>
+        <member name="F:Digger.Source.robakS">
+            <summary>
+            tekstura super robaka
+            </summary>
+        </member>
+        <member name="F:Digger.Source.glaz">
+            <summary>
+            tekstura pulapki
+            </summary>
+        </member>
+        <member name="F:Digger.Source.infBoxFont">
+            <summary>
+            czcionka
+            </summary>
+        </member>
+        <member name="M:Digger.Source.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Graphics.SpriteFont,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Graphics.Texture2D)">
+            <summary>
+            Wczytuje tekstury
+            </summary>
+            <param name="_tony">tekstura gracza</param>
+            <param name="_robak">tekstura robaka</param>
+            <param name="_robakS">tekstura super robaka</param>
+            <param name="_pole">tekstura pola</param>
+            <param name="_tloScore">tekstura tla</param>
+            <param name="_rubin">tekstura rubinu</param>
+            <param name="_diament">tekstura diamentu</param>
+            <param name="_infBoxFont">czcionka</param>
+            <param name="_pistolet">tekstura pistoletu</param>
+            <param name="_dzida">tekstura dzidy</param>
+            <param name="_pocisk1">tekstura pocisku pistoletu</param>
+            <param name="_pocisk2">tekstura pocisku dzidy</param>
+            <param name="_glaz">tekstura pulapki</param>
+        </member>
+        <member name="T:Digger.Bonus">
+            <summary>
+            Klasa implementujaca bonusy wystepujace w grze
+            </summary>
+        </member>
+        <member name="M:Digger.Bonus.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Tworzy nowy obiekt typu Bonus.
+            </summary>
+            <param name="newTexture">Tekstura dla Bonusa.</param>
+            <param name="newPosition">Pozycja startowa.</param>
+        </member>
+        <member name="M:Digger.Bonus.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Uaktualnia stan Bunusu. 
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:Digger.Bonus.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Ryzuje Bonus na planszy.
+            </summary>
+            <param name="spriteBratch"></param>
+        </member>
+        <member name="T:Digger.StateField">
+            <summary>
+            Okresla stan pola na planszy.
+            </summary>
+        </member>
+        <member name="T:Digger.Field">
+            <summary>
+            Struktura pojedynczego pola na planszy.
+            </summary>
+        </member>
+        <member name="T:Digger.Map">
+            <summary>
+            Klasa odpowiedzialna zatworzenie mapy rozgrywki.
+            </summary>
+        </member>
+        <member name="F:Digger.Map.clear">
+            <summary>
+            okresla czy gracz zakonczyl dony poziom.
+            </summary>
+        </member>
+        <member name="F:Digger.Map.map">
+            <summary>
+            Tablic pol mapy.
+            </summary>
+        </member>
+        <member name="F:Digger.Map.startPosition">
+            <summary>
+            Pozycja poczatka startowego tunelu.
+            </summary>
+        </member>
+        <member name="F:Digger.Map.endPosition">
+            <summary>
+            Pozycja konca poczatkowego tunelu.
+            </summary>
+        </member>
+        <member name="M:Digger.Map.#ctor">
+             <summary>
+            Tworzy nowy obiekt typu Map.
+             </summary>
+        </member>
+        <member name="M:Digger.Map.setRubin">
+            <summary>
+            Ustawia rubiny na mapie.
+            </summary>
+        </member>
+        <member name="M:Digger.Map.setTrap">
+            <summary>
+            Ustawia pulapki na mapie.
+            </summary>
+        </member>
+        <member name="M:Digger.Map.countRubin">
+            <summary>
+            Wylicza ileos rubinow i pulapek zaleznei od pozimu.
+            </summary>
+        </member>
+        <member name="M:Digger.Map.firstTunnelrend">
+            <summary>
+            Tworzy pierwszy losowy tunel
+            </summary>
+        </member>
+        <member name="M:Digger.Map.Update(Microsoft.Xna.Framework.GameTime,Digger.Tony@)">
+            <summary>
+            Uaktualnia obiekty na mapie.
+            </summary>
+            <param name="gameTimer"></param>
+            <param name="player">Obikt gracza</param>
+        </member>
+        <member name="M:Digger.Map.setDiamond">
+            <summary>
+            Ustawia diament po zebraniu wszystkich rubinow.
+            </summary>
+        </member>
+        <member name="M:Digger.Map.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Rysuje obiekty na mapie.
+            </summary>
+            <param name="spriteBatch"></param>
+        </member>
+        <member name="T:Digger.Level">
+            <summary>
+            Klasa zarzadzajaca obecnym levelem.
+            </summary>
+        </member>
+        <member name="F:Digger.Level.player">
+            <summary>
+            Obecny gracz.
+            </summary>
+        </member>
+        <member name="F:Digger.Level.enemyTimer">
+            <summary>
+            Timer odliczający czas do pojawienia sie kolejnego przeciwnika
+            </summary>
+        </member>
+        <member name="F:Digger.Level.levelEnd">
+            <summary>
+            Okresla zakonczenie obecnego levelu.
+            </summary>
+        </member>
+        <member name="F:Digger.Level.points">
+            <summary>
+            Punkty zdobyte podczas rozgrywki.
+            </summary>
+        </member>
+        <member name="F:Digger.Level.enemy">
+            <summary>
+            Lista przeciwnikow typu Robak.
+            </summary>
+        </member>
+        <member name="F:Digger.Level.enemySuper">
+            <summary>
+            Lista przeciwnikow typu SuperRobak.
+            </summary>
+        </member>
+        <member name="F:Digger.Level.trap">
+            <summary>
+            Lista zawierajaca pulapki.
+            </summary>
+        </member>
+        <member name="F:Digger.Level.map">
+            <summary>
+            Obecna mapa dla levelu.
+            </summary>
+        </member>
+        <member name="M:Digger.Level.#ctor(Microsoft.Xna.Framework.Graphics.GraphicsDevice,System.Int32)">
+            <summary>
+            Tworzy nowy obiekt typu Level
+            </summary>
+            <param name="graphics"></param>
+            <param name="currpoint">Punkty od ktorych ma sie zaczac level</param>
+        </member>
+        <member name="M:Digger.Level.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Funkcja odpowiedzialna za uaktualnianie obiektow zwiazanych z levelem.
+            </summary>
+            <param name="gameTimer"></param>
+        </member>
+        <member name="M:Digger.Level.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Rysowanie obiektow zwiazanych z levelem.
+            </summary>
+            <param name="spriteBatch"></param>
+        </member>
+        <member name="M:Digger.Level.AddEnemy(System.Object,System.EventArgs)">
+            <summary>
+            Funkcja dodaje przeciwnikow do levelu.
+            </summary>
+            <param name="myObject"></param>
+            <param name="myEventArgs"></param>
+        </member>
+        <member name="M:Digger.Level.countEnemy">
+            <summary>
+            Funkcja wylicza ilosc przeciwnikow w zaleznosci od obecnego levelu
+            </summary>
+        </member>
+        <member name="T:Digger.Tony">
+            <summary>
+            Klasa implementuje postac gracza
+            </summary>
+        </member>
+        <member name="T:Digger.Characters">
+            <summary>
+            Szablon klasy dla postaci wystepujacych w grze.
+            </summary>
+        </member>
+        <member name="F:Digger.Characters.position">
+            <summary>
+            Okresla obecna pozycje postaci.
+            </summary>
+        </member>
+        <member name="M:Digger.Characters.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Tworzy nowy obiekt typu Charakters.
+            </summary>
+            <param name="newTexture">Tekstura dla Charakters.</param>
+            <param name="newPosition">Pozycja startowa dla Charakters.</param>
+        </member>
+        <member name="M:Digger.Characters.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Uaktualnia stan Charakters.
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:Digger.Characters.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Rysuje Charakters na planszy.
+            </summary>
+            <param name="spriteBratch"></param>
+        </member>
+        <member name="F:Digger.Tony.gunTimer">
+            <summary>
+            Timer odliczajacy czas do załadowania sie pistoletu
+            </summary>
+        </member>
+        <member name="F:Digger.Tony.laserTimer">
+            <summary>
+            Timer odliczajacy czas do zaladowania dzidy
+            </summary>
+        </member>
+        <member name="F:Digger.Tony.dead">
+            <summary>
+            okresla stan gracza
+            </summary>
+        </member>
+        <member name="F:Digger.Tony.currPosition">
+            <summary>
+            Okresla obecna pozycje gracza
+            </summary>
+        </member>
+        <member name="F:Digger.Tony.ready">
+            <summary>
+            Stan broni.
+            </summary>
+        </member>
+        <member name="M:Digger.Tony.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Vector2)">
+            <summary>
+            Tworzy obiekt typu Tony
+            </summary>
+            <param name="newTexture">Textura Tonego</param>
+            <param name="newPosition">Nowa pozycja</param>
+        </member>
+        <member name="M:Digger.Tony.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Uaktualnia pozycje gracza
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:Digger.Tony.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Rysuje gracza na planszy
+            </summary>
+            <param name="spriteBratch"></param>
+        </member>
+        <member name="M:Digger.Tony.TimerPistolet(System.Object,System.EventArgs)">
+            <summary>
+            zmienia stan gotowosci broni pistolet
+            </summary>
+            <param name="myObject"></param>
+            <param name="myEventArgs"></param>
+        </member>
+        <member name="M:Digger.Tony.TimerLaser(System.Object,System.EventArgs)">
+            <summary>
+            Zmienia stan gotowosci broni laserowa dzida
+            </summary>
+            <param name="myObject"></param>
+            <param name="myEventArgs"></param>
+        </member>
+        <member name="P:Digger.Tony.Weapon">
+            <summary>
+            Okresle obeca bron
+            </summary>
+        </member>
+        <member name="P:Digger.Tony.NumLife">
+            <summary>
+            Stan zycia bohatera
+            </summary>
+        </member>
+        <member name="T:Digger.Logic">
+            <summary>
+            Klasa odpowiedzialna za zmiane pozionow.
+            </summary>
+        </member>
+        <member name="F:Digger.Logic.numLevel">
+            <summary>
+            Obececy rozgrywany poziom.
+            </summary>
+        </member>
+        <member name="M:Digger.Logic.#ctor(Microsoft.Xna.Framework.Graphics.GraphicsDevice)">
+            <summary>
+            Tworzy nowy obiekt typu Logic.
+            </summary>
+            <param name="graphics"></param>
+        </member>
+        <member name="M:Digger.Logic.startLevel">
+            <summary>
+            Startuje rozgrywke.
+            </summary>
+        </member>
+        <member name="M:Digger.Logic.startLevel(System.Int32,System.Int32)">
+            <summary>
+            Startuje rozgrywke
+            </summary>
+            <param name="point">Ilos punktow</param>
+            <param name="counter">ilosc zyc</param>
+        </member>
+        <member name="M:Digger.Logic.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Uaktualnia poziomu, sprawdza czy gracz wygral lub przegral.
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:Digger.Logic.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Rysuje obiekty obecnego levelu. 
+            </summary>
+            <param name="spriteBratch"></param>
+        </member>
+        <member name="P:Digger.Logic.Points">
+            <summary>
+            Przechowuje obecny stan punktow.
+            </summary>
+        </member>
+        <member name="P:Digger.Logic.StartPoints">
+            <summary>
+            Przechowuje stan punktow na poczatku levelu.
+            </summary>
+        </member>
+        <member name="T:Digger.SuperRobak">
+            <summary>
+            Klasa implementujaca SuperRobaka
+            </summary>
+        </member>
+        <member name="M:Digger.SuperRobak.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Vector2,Digger.Tony)">
+            <summary>
+            Tworzy nowy obiekt typu SuperRobak
+            </summary>
+            <param name="newTexture">textura dla Robaka</param>
+            <param name="newPosition">now pozycja</param>
+            <param name="newTony">obiekt gracza</param>
+        </member>
+        <member name="M:Digger.SuperRobak.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Uaktualnia stan robaka- poruszanie, kolizje
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:Digger.SuperRobak.move">
+            <summary>
+            Porusza SuperRobakiem
+            </summary>
+        </member>
+        <member name="M:Digger.SuperRobak.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Rysuje robaka na planszy
+            </summary>
+            <param name="spriteBratch"></param>
+        </member>
+        <member name="M:Digger.SuperRobak.hit">
+            <summary>
+            Sprawdza czy SuperRobak nie zabil gracza
+            </summary>
+        </member>
+        <member name="T:Digger.Robak">
+            <summary>
+            Klasa implementyjaca przeciwnika typu Robak.
+            </summary>
+        </member>
+        <member name="M:Digger.Robak.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D,Microsoft.Xna.Framework.Vector2,Digger.Tony)">
+            <summary>
+            Tworzy nowy obiekt typu Robak
+            </summary>
+            <param name="newTexture">textura dla Robaka</param>
+            <param name="newPosition">now pozycja</param>
+            <param name="newTony">obiekt gracza</param>
+        </member>
+        <member name="M:Digger.Robak.Update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Uaktualnia stan robaka- poruszanie, kolizje
+            </summary>
+            <param name="gameTime"></param>
+        </member>
+        <member name="M:Digger.Robak.move">
+            <summary>
+            porusza robakiem
+            </summary>
+        </member>
+        <member name="M:Digger.Robak.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Rysuje robaka na planszy
+            </summary>
+            <param name="spriteBratch"></param>
+        </member>
+        <member name="M:Digger.Robak.hit">
+            <summary>
+            Sprawdza czy Robak nie zabil gracza
+            </summary>
+        </member>
+    </members>
+</doc>
